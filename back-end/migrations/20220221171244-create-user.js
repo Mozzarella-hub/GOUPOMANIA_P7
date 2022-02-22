@@ -66,6 +66,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      recovery_token: {
+        type: Sequelize.STRING,
+        unique: true
+    }
     });
   },
   async down(queryInterface, Sequelize) {

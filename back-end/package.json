@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "fs": "^0.0.1-security",
@@ -10,7 +11,9 @@
     "mysql2": "^2.3.3",
     "path": "^0.12.7",
     "sequelize": "^6.16.2",
+    "sequelize-bcrypt": "^1.1.0",
     "sequelize-cli": "^6.4.1",
+    "sequelize-tokenify": "^0.2.3",
     "validator": "^13.7.0"
   },
   "scripts": {
