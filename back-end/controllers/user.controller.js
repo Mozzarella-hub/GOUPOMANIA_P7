@@ -1,17 +1,18 @@
 //HASH SECURITY MP & TOKEN
 const bcrypt = require('bcrypt');
-const saltRounds = 12;
+const saltRounds = 10;
 const jwt = require("jsonwebtoken");
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+
 require("dotenv").config();
 
 
-const models = require("../models/user");
+const User = require("../models/user");
 const { ValidationError, UniqueConstraintError } = require("sequelize");
 
 //AUTH
-exports.register = (req, res, next) => {
-    bcrypt.hash(req.body.password, saltRounds).then((hash) => {
-    
+exports.register = (req, res) => {
+    bcrypt.hash(myPlaintextPassword, saltRounds).then((hash) => {
       User.create({
         email: req.body.email,
         name: req.body.name,
@@ -35,7 +36,7 @@ exports.register = (req, res, next) => {
     });
   };
 
-  exports.login = (req, res, next) => {
+  exports.login = (req, res ) => {
     User.findOne({
       where: {
         email: req.body.email,

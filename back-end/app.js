@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const sequelize = require("./dbConnection");
+//const sequelize = require("./dbConnection");
 
 const userRoutes = require("./routes/user.route").router;
 
@@ -32,10 +32,10 @@ app.use('/api/user', userRoutes);
 
 //CO BDD
 // connexion avec la bdd
-sequelize.initDb();
+// sequelize.initDb();
 
-app.use((req, res) => {
-  res.json({ message: "La requête a bien été reçu !" });
-});
+// app.use((req, res) => {
+//   res.json({ message: "La requête a bien été reçu !" });
+// });
 
 module.exports = app;
