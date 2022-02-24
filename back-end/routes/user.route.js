@@ -7,7 +7,7 @@ const userCtrl = require("../controllers/user.controller");
 exports.router = (function () {
   //ROUTES
   router.route("/register/").post(userCtrl.register);
-  router.route("/users/login/").post(userCtrl.login);
+  router.route("/login/").post(userCtrl.login);
 
   return router;
 })();

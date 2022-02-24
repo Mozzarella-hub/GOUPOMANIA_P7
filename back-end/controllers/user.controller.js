@@ -2,18 +2,17 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
+//const myPlaintextPassword = 's0/\/\P4$$w0rD';
 
 require("dotenv").config();
 
-
-const User = require("../models/user");
+const db = require('../models/index');
 const { ValidationError, UniqueConstraintError } = require("sequelize");
 
 //AUTH
 exports.register = (req, res) => {
-    bcrypt.hash(myPlaintextPassword, saltRounds).then((hash) => {
-      User.create({
+    bcrypt.hash(req.body.password, saltRounds).then(function(hash) {
+      db.User.create({
         email: req.body.email,
         name: req.body.name,
         password: hash,
@@ -21,14 +20,14 @@ exports.register = (req, res) => {
       })
         .then((user) => {
           const message = `Utilisateur ${req.body.name} a été enregistré.`;
-          res.status(201).json({ message, data: user });
+          res.status(201).json({ message, data: user.split('password') });
         })
         .catch((error) => {
           if (error instanceof ValidationError) {
             return res.status(400).json({ message: error.message, data: error }); 
           }
           if (error instanceof UniqueConstraintError) {
-            return res.status(400).json({ message: error.message, data: error });v//contôle sequelize model_email _nique
+            return res.status(400).json({ message: error.message, data: error }); //contôle sequelize model_email _nique
           }
           const message = `L'utilisateur ${req.body.name} n'a pas pu être créé, problème de user.controller.`;
           return res.status(500).json({ message, data: error });
@@ -37,7 +36,7 @@ exports.register = (req, res) => {
   };
 
   exports.login = (req, res ) => {
-    User.findOne({
+    db.User.findOne({
       where: {
         email: req.body.email,
       },
