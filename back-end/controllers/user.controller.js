@@ -60,7 +60,7 @@ exports.register = (req, res) => {
             }
           );
           const message = "L'utilisateur a été connecté avec succès";
-          return res.status(200).json({ message, data: user, token });
+          return res.status(200).json({ message, data: token });
         });
       })
       .catch((error) => {
