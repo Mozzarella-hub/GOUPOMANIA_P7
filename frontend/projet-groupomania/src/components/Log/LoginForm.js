@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+// require("dotenv").config();
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-//   const departement = req.body.departement;
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,7 +20,6 @@ const LoginForm = () => {
       data: {
         email,
         password,
-        // departement,
       },
     })
       .then((res) => {

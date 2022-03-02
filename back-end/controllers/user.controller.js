@@ -16,7 +16,6 @@ exports.register = (req, res) => {
         email: req.body.email,
         name: req.body.name,
         password: hash,
-        departement: req.body.departement,
       })
         .then((user) => {
           const message = `Utilisateur ${req.body.name} a été enregistré.`;

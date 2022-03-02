@@ -1,41 +1,38 @@
+
 import React, { useState } from "react";
 import axios from "axios";
 import LoginForm from "./LoginForm";
+// require("dotenv").config();
+
 
 const RegisterForm = () => {
   const [formSubmit, setFormSubmit] = useState(false);
-  const [pseudo, setPseudo] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [controlPassword, setControlPassword] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const terms = document.getElementById("terms");
-    const pseudoError = document.querySelector(".pseudo.error");
+    const nameError = document.querySelector(".name.error");
     const emailError = document.querySelector(".email.error");
     const passwordError = document.querySelector(".password.error");
     const passwordConfirmError = document.querySelector(
       ".password-confirm.error"
     );
-    const termsError = document.querySelector(".terms.error");
 
     passwordConfirmError.innerHTML = "";
-    termsError.innerHTML = "";
 
-    if (password !== controlPassword || !terms.checked) {
+    if (password !== controlPassword) {
       if (password !== controlPassword)
         passwordConfirmError.innerHTML =
           "Les mots de passe ne correspondent pas";
-
-      if (!terms.checked)
-        termsError.innerHTML = "Veuillez valider les conditions générales";
     } else {
       await axios({
         method: "post",
         url: `${process.env.REACT_APP_API_URL}api/user/register`,
         data: {
-          pseudo,
+            name,
           email,
           password,
         },
@@ -43,7 +40,7 @@ const RegisterForm = () => {
         .then((res) => {
           console.log(res);
           if (res.data.errors) {
-            pseudoError.innerHTML = res.data.errors.pseudo;
+            nameError.innerHTML = res.data.errors.name;
             emailError.innerHTML = res.data.errors.email;
             passwordError.innerHTML = res.data.errors.password;
           } else {
@@ -66,16 +63,16 @@ const RegisterForm = () => {
         </>
       ) : (
         <form action="" onSubmit={handleRegister} id="sign-up-form">
-          <label htmlFor="pseudo">Nom</label>
+          <label htmlFor="name">Nom</label>
           <br />
           <input
             type="text"
             name="nom"
             id="name"
-            onChange={(e) => setPseudo(e.target.value)}
-            value={pseudo}
+            onChange={(e) => setName(e.target.value)}
+            value={name}
           />
-          <div className="pseudo error"></div>
+          <div className="name error"></div>
           <br />
           <label htmlFor="email">Email</label>
           <br />
@@ -110,15 +107,6 @@ const RegisterForm = () => {
           />
           <div className="password-confirm error"></div>
           <br />
-          {/* <input type="checkbox" id="terms" />
-
-          {/* <label htmlFor="terms">
-            J'accepte les{" "}
-            <a href="/" target="_blank" rel="noopener noreferrer">
-              conditions générales
-            </a>
-          </label> */} 
-
           <div className="terms error"></div>
           <br />
           <input type="submit" value="Valider inscription" />

@@ -41,14 +41,14 @@ module.exports = {
           msg: "Mot de passe manquant ou format non valide",
         },
       },
-      departement: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          isEmpty: false,
-          msg: "Département ne peut pas être vide",
-        },
-      },
+      // departement: {
+      //   type: Sequelize.STRING,
+      //   allowNull: false,
+      //   validate: {
+      //     isEmpty: false,
+      //     msg: "Département ne peut pas être vide",
+      //   },
+      // },
       isAdmin: {
         type: Sequelize.BOOLEAN,
         defaultValue: false, // true permet d'avoir des droits d'administrateur (suppression de tous les posts ou commentaires)
