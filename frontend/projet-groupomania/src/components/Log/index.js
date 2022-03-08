@@ -35,7 +35,11 @@ const Log = ( props ) => {
             Se connecter
           </li>
         </ul>
-        {registerModal && <RegisterForm />}
+
+        {/* si le registerModal est sur true alors affiches le <RegisterForm />*/}
+        {registerModal && <RegisterForm />}  
+
+        {/* si le {loginModal && <LoginForm />} est sur true alors affiches le <LoginForm />*/}
         {loginModal && <LoginForm />}
       </div>
     </div>

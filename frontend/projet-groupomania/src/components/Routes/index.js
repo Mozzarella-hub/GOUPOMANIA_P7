@@ -1,15 +1,15 @@
 import React from 'react';
-import Banner from "../Banner";
-import { BrowserRouter as Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import Home from '../../pages/Home';
+import Profil from '../../pages/Profil';
 
 
 const index = () => {
   return (
     <div>
-      <Banner />
       <Routes>
-        {/* <Route path="/" element={<Home />} />
-        <Route path="/profil" element={<Profil />} /> */}
+        <Route path="/" element={<Home />} />
+        <Route path="/profil" element={<Profil />} />
       </Routes>
     </div>
   );
