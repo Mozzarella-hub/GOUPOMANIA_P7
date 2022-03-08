@@ -15,7 +15,7 @@ const App = () => {
     const fetchToken = async () => {
       await axios({
         method: "get",
-        url: 'http://localhost:3001/jwtid',
+        url: `${process.env.REACT_APP_API_URL}jwtid`,
         withCredentials: true,
       })
         .then((res) => {

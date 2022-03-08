@@ -32,7 +32,7 @@ const LoginForm = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log('Plantage LoginForm');
       });
   };
 
