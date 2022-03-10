@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { getUser } from "./actions/user.actions";
 
 
+
 const App = () => {
   const [uid, setUid] = useState(null);
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const App = () => {
       await axios({
         method: "get",
         url: `${process.env.REACT_APP_API_URL}jwtid`,
-        withCredentials: true,
+        withCredentials: false,
       })
         .then((res) => {
           setUid(res.data);

@@ -28,14 +28,7 @@ app.use((req, res, next) => {
 
 //ROUTES
 app.use('/api/user', userRoutes);
+
 ;
-
-//CO BDD
-// connexion avec la bdd
-// sequelize.initDb();
-
-// app.use((req, res) => {
-//   res.json({ message: "La requête a bien été reçu !" });
-// });
 
 module.exports = app;

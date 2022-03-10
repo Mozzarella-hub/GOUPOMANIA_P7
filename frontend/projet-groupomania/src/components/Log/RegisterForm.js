@@ -1,9 +1,6 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 import LoginForm from "./LoginForm";
-// require("dotenv").config();
-
 
 const RegisterForm = () => {
   const [formSubmit, setFormSubmit] = useState(false);
@@ -29,11 +26,12 @@ const RegisterForm = () => {
           "Les mots de passe ne correspondent pas";
     } else {
       await axios({
-        method: "post",
+        method: "POST",
         url: `${process.env.REACT_APP_API_URL}api/user/register`,
+        withCredentials: false,
         data: {
-            name,
           email,
+          name,
           password,
         },
       })
@@ -58,7 +56,7 @@ const RegisterForm = () => {
           <LoginForm />
           <span></span>
           <h4 className="success">
-            Enregistrement réussi, veuillez-vous connecter
+            "Enregistrement réussi, veuillez-vous connecter"
           </h4>
         </>
       ) : (
@@ -97,7 +95,7 @@ const RegisterForm = () => {
           <div className="password error"></div>
           <br />
           <label htmlFor="password-conf">Confirmer mot de passe</label>
-          <br/>
+          <br />
           <input
             type="password"
             name="password"

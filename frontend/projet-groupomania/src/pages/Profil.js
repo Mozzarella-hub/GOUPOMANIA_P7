@@ -9,12 +9,12 @@ const Profil = () => {
     return (
     <div className="profil-page">
         {uid ? (
-            <h1>PAge UDZTE</h1>
+            <h1>PAGE UDATE</h1>
             ):(
         <div className="log-container">
             <Log signin={false} signup={true} />
             <div className=".img-container">
-                <img src="../public/icon.svg" alt="img-log" />
+                {/* <img src="..\..\icon.svg" alt="img-log" /> */}
             </div>
         </div>
         )}
